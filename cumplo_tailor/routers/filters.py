@@ -1,15 +1,17 @@
+"""Investment filter configuration routes."""
+
 from http import HTTPStatus
 from logging import getLogger
 from typing import cast
 
 import ulid
-from cumplo_common.database import firestore
-from cumplo_common.models.filter_configuration import FilterConfiguration
-from cumplo_common.models.user import User
 from fastapi import APIRouter
 from fastapi.exceptions import HTTPException
 from fastapi.requests import Request
 
+from cumplo_common.database import firestore
+from cumplo_common.models.filter_configuration import FilterConfiguration
+from cumplo_common.models.user import User
 from cumplo_tailor.utils.constants import MAX_FILTERS
 from cumplo_tailor.utils.dictionary import update_dictionary
 

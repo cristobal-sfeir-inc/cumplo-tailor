@@ -1,3 +1,6 @@
+"""Dictionary utility functions."""
+
+
 def update_dictionary(original: dict, new: dict) -> dict:
     """Merge recursively the new dictionary into the original dictionary overwriting existing values."""
     for key, value in new.items():

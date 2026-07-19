@@ -1,7 +1,9 @@
+"""User management controllers."""
+
 import ulid
+
 from cumplo_common.database import firestore
 from cumplo_common.models.user import User
-
 from cumplo_tailor.integrations import CloudCredentials
 
 

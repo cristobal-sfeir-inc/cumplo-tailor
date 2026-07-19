@@ -1,16 +1,18 @@
+"""FastAPI application entry point."""
+
 import json
 from http import HTTPStatus
 from logging import DEBUG, ERROR, basicConfig, getLogger
 
 import google.cloud.logging
-from cumplo_common.dependencies import authenticate, is_admin
-from cumplo_common.middlewares import PubSubMiddleware
 from fastapi import Depends, FastAPI
 from fastapi.encoders import jsonable_encoder
 from fastapi.requests import Request
 from fastapi.responses import JSONResponse
 from pydantic import ValidationError
 
+from cumplo_common.dependencies import authenticate, is_admin
+from cumplo_common.middlewares import PubSubMiddleware
 from cumplo_tailor.routers import channels, credentials, filters, subscriptions, users
 from cumplo_tailor.utils.constants import IS_TESTING, LOG_FORMAT
 

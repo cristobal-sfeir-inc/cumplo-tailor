@@ -1,3 +1,5 @@
+"""Google Cloud API key management integration."""
+
 import asyncio
 from enum import StrEnum
 from http import HTTPStatus

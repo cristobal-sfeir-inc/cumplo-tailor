@@ -1,12 +1,15 @@
+"""User credentials routes."""
+
 from http import HTTPStatus
 from logging import getLogger
 from typing import cast
 
+from fastapi import APIRouter
+from fastapi.requests import Request
+
 from cumplo_common.database import firestore
 from cumplo_common.models.credentials import Credentials
 from cumplo_common.models.user import User
-from fastapi import APIRouter
-from fastapi.requests import Request
 
 logger = getLogger(__name__)
 
