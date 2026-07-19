@@ -1,12 +1,14 @@
+"""Gmail subscription routes."""
+
 import re
 from http import HTTPStatus
 from logging import getLogger
 
-from cumplo_common.database import firestore
-from cumplo_common.integrations.gmail import Gmail
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
 
+from cumplo_common.database import firestore
+from cumplo_common.integrations.gmail import Gmail
 from cumplo_tailor.controllers import UsersController
 from cumplo_tailor.utils.constants import PATTERN_BY_SENDER
 

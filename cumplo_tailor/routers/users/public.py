@@ -1,11 +1,14 @@
+"""Public user self-service routes."""
+
 from http import HTTPStatus
 from logging import getLogger
 from typing import cast
 
-from cumplo_common.database import firestore
-from cumplo_common.models.user import User
 from fastapi import APIRouter
 from fastapi.requests import Request
+
+from cumplo_common.database import firestore
+from cumplo_common.models.user import User
 
 logger = getLogger(__name__)
 

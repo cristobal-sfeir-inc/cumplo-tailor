@@ -1,8 +1,14 @@
+"""Channel configuration routes."""
+
 from http import HTTPStatus
 from logging import getLogger
 from typing import cast
 
 import ulid
+from fastapi import APIRouter
+from fastapi.exceptions import HTTPException
+from fastapi.requests import Request
+
 from cumplo_common.database import firestore
 from cumplo_common.models.channel import (
     ALL_EVENTS,
@@ -13,10 +19,6 @@ from cumplo_common.models.channel import (
     WebhookConfiguration,
 )
 from cumplo_common.models.user import User
-from fastapi import APIRouter
-from fastapi.exceptions import HTTPException
-from fastapi.requests import Request
-
 from cumplo_tailor.controllers import ChannelsController
 
 logger = getLogger(__name__)
