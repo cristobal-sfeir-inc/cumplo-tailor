@@ -3,11 +3,11 @@
 from http import HTTPStatus
 from logging import getLogger
 
+from cumplo_common.database import firestore
+from cumplo_common.models.user import User
 from fastapi import APIRouter
 from fastapi.exceptions import HTTPException
 
-from cumplo_common.database import firestore
-from cumplo_common.models.user import User
 from cumplo_tailor.controllers import UsersController
 from cumplo_tailor.utils.dictionary import update_dictionary
 

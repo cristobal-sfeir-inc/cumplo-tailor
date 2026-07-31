@@ -4,8 +4,6 @@ from collections.abc import Iterable
 from http import HTTPStatus
 from typing import cast
 
-from fastapi.exceptions import HTTPException
-
 from cumplo_common.models.channel import (
     ChannelConfiguration,
     ChannelType,
@@ -14,6 +12,8 @@ from cumplo_common.models.channel import (
     WhatsappConfiguration,
 )
 from cumplo_common.models.user import User
+from fastapi.exceptions import HTTPException
+
 from cumplo_tailor.utils.constants import MAX_WEBHOOKS
 
 
