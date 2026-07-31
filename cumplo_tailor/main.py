@@ -33,7 +33,7 @@ app.add_middleware(PubSubMiddleware)
 
 
 @app.exception_handler(ValidationError)
-async def _validation_error_handler(_request: Request, error: ValidationError) -> JSONResponse:  # ruff:ignore[unused-async]
+def _validation_error_handler(_request: Request, error: ValidationError) -> JSONResponse:
     """Format ValidationError as a JSON response."""
     content = json.loads(jsonable_encoder(error.json()))
     return JSONResponse(status_code=HTTPStatus.UNPROCESSABLE_ENTITY, content=content)
