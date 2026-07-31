@@ -37,6 +37,8 @@ build-backend = "poetry.core.masonry.api"
 [tool.pyright]
 pythonVersion = "3.13"
 typeCheckingMode = "standard"
+reportPrivateImportUsage = "none"
+reportAttributeAccessIssue = "none"
 
 [tool.ruff]
 line-length = 120
