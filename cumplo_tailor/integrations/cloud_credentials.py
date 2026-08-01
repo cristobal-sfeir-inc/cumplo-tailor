@@ -5,7 +5,7 @@ from enum import StrEnum
 from http import HTTPStatus
 
 from fastapi import HTTPException
-from google import auth
+from google import auth  # pyright: ignore[reportAttributeAccessIssue]
 from googleapiclient.discovery import build
 
 from cumplo_tailor.utils.constants import CLOUD_CREDENTIALS_SCOPES, CUMPLO_API_SERVICE
