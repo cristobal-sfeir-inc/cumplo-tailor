@@ -33,7 +33,9 @@ class CloudCredentials:
         }
 
         parent = f"projects/{project_id}/locations/global"
-        operation = apikeys_service.projects().locations().keys().create(parent=parent, body=body).execute()
+        operation = (  # pyright: ignore[reportAttributeAccessIssue]
+            apikeys_service.projects().locations().keys().create(parent=parent, body=body).execute()
+        )
 
         async def poll() -> dict:
             """
@@ -43,9 +45,11 @@ class CloudCredentials:
                 HTTPException: If the API key creation fails.
 
             """
-            operation_service = apikeys_service.operations()
+            operation_service = apikeys_service.operations()  # pyright: ignore[reportAttributeAccessIssue]
             while True:
-                result = operation_service.get(name=operation["name"]).execute()
+                result = (  # pyright: ignore[reportAttributeAccessIssue]
+                    operation_service.get(name=operation["name"]).execute()
+                )
                 if cls.OperationKeys.DONE in result:
                     if cls.OperationKeys.RESPONSE in result:
                         return result[cls.OperationKeys.RESPONSE]
