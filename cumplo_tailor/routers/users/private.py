@@ -1,3 +1,5 @@
+"""Admin user management routes."""
+
 from http import HTTPStatus
 from logging import getLogger
 
@@ -54,7 +56,7 @@ def _update_user(payload: dict, id_user: str) -> dict:
     try:
         user = firestore.client.users.get(id_user)
     except KeyError:
-        raise HTTPException(HTTPStatus.NOT_FOUND)  # noqa: B904
+        raise HTTPException(HTTPStatus.NOT_FOUND)
 
     data = update_dictionary(user.model_dump(), payload)
     new_user = User.model_validate(data)
@@ -75,7 +77,7 @@ def _delete_user(id_user: str) -> None:
     try:
         user = firestore.client.users.get(id_user)
     except KeyError:
-        raise HTTPException(HTTPStatus.NOT_FOUND)  # noqa: B904
+        raise HTTPException(HTTPStatus.NOT_FOUND)
 
     firestore.client.users.delete(user)
 
@@ -92,7 +94,7 @@ def _disable_user(id_user: str) -> None:
     try:
         user = firestore.client.users.get(id_user)
     except KeyError:
-        raise HTTPException(HTTPStatus.NOT_FOUND)  # noqa: B904
+        raise HTTPException(HTTPStatus.NOT_FOUND)
 
     firestore.client.disabled.put(user)
     firestore.client.users.delete(user)

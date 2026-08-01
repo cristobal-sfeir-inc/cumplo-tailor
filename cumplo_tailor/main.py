@@ -1,3 +1,5 @@
+"""FastAPI application entry point."""
+
 import json
 from http import HTTPStatus
 from logging import DEBUG, ERROR, basicConfig, getLogger
@@ -31,17 +33,23 @@ app.add_middleware(PubSubMiddleware)
 
 
 @app.exception_handler(ValidationError)
-async def _validation_error_handler(_request: Request, error: ValidationError) -> JSONResponse:  # noqa: RUF029
+def _validation_error_handler(_request: Request, error: ValidationError) -> JSONResponse:
     """Format ValidationError as a JSON response."""
     content = json.loads(jsonable_encoder(error.json()))
     return JSONResponse(status_code=HTTPStatus.UNPROCESSABLE_ENTITY, content=content)
 
 
 # Admin routes
-app.include_router(users.private.router, dependencies=[Depends(authenticate), Depends(is_admin)])
+app.include_router(
+    users.private.router,  # pyright: ignore[reportAttributeAccessIssue]
+    dependencies=[Depends(authenticate), Depends(is_admin)],
+)
 
 # Public routes
-app.include_router(users.public.router, dependencies=[Depends(authenticate)])
+app.include_router(
+    users.public.router,  # pyright: ignore[reportAttributeAccessIssue]
+    dependencies=[Depends(authenticate)],
+)
 app.include_router(filters.router, dependencies=[Depends(authenticate)])
 app.include_router(channels.router, dependencies=[Depends(authenticate)])
 app.include_router(credentials.router, dependencies=[Depends(authenticate)])

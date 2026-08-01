@@ -1,3 +1,5 @@
+"""Channel management controllers."""
+
 from collections.abc import Iterable
 from http import HTTPStatus
 from typing import cast

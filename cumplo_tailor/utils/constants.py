@@ -1,3 +1,5 @@
+"""Application constants and environment configuration."""
+
 import json
 import os
 

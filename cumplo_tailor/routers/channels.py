@@ -1,3 +1,5 @@
+"""Channel configuration routes."""
+
 from http import HTTPStatus
 from logging import getLogger
 from typing import cast

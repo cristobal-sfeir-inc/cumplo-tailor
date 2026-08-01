@@ -1,3 +1,5 @@
+"""Gmail subscription routes."""
+
 import re
 from http import HTTPStatus
 from logging import getLogger

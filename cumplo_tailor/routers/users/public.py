@@ -1,3 +1,5 @@
+"""Public user self-service routes."""
+
 from http import HTTPStatus
 from logging import getLogger
 from typing import cast
